@@ -1,5 +1,5 @@
-import pickle
-f=open("Studentdata.dat","wb")
+import csv
+import os
 
 stud = [
     ["A. ARAVIND", "23226er001", 92, 91, 78, 77, 79, 80],
@@ -125,7 +125,15 @@ stud = [
     ["A. ASHOKAN", "23226er121", 41, 46, 47, 35, 35, 52],
     ["B. ASWIN", "23226er122", 90, 88, 92, 83, 96, 85],
     ["C. BACKIYARAJ", "23226er123", 65, 76, 65, 82, 66, 77],
-    ["D. BAKYALAKSHMI", "23226er124", 53, 45, 50, 52, 52, 44]
+    ["D. BAKYALAKSHMI", "23226er124", 53, 45, 50, 52, 52, 44],
 ]
-pickle.dump(stud,f)
-f.close()
+
+os.makedirs("data", exist_ok=True)
+
+with open("data/Studentdata.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Name", "Register No", "Tamil", "English", "Maths", "Physics", "Chemistry", "Biology"])
+    writer.writerows(stud)
+
+print(f"CSV generated successfully with {len(stud)} students.")
+print("Saved to: data/Studentdata.csv")
