@@ -98,7 +98,7 @@ def main():
             export_menu()
         elif choice == 6:
             print()
-            print("  Thank You. Goodbye!")
+            print("  Thank You.. Goodbye!")
             print()
             break
         else:
